@@ -1,0 +1,41 @@
+<html>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.js"></script>
+<script src="https://cdn.bootcss.com/vue-router/2.3.0/vue-router.js"></script>
+<!--
+  Vue Route 2.0 modify api, and usage far from version 0.7
+-->
+
+<body>
+  <div id="app">
+    <p>
+      <router-link to="/home">Home</router-link>
+      <router-link to="/list">List</router-link>
+
+    </p>
+    <router-view></router-view>
+
+  </div>
+
+  <script>
+    var Home = Vue.extend({
+      template: "<p>home</p>"
+    });
+    var router = new VueRouter({
+      routes: [{
+        path: "/home",
+        component: Home
+      }, {
+        path: "/list",
+        component: {
+          template: "<h1> this is list page </h1>"
+
+        }
+      }]
+    });
+    const app = new Vue({
+      router
+    }).$mount('#app')
+  </script>
+</body>
+
+</html>

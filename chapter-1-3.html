@@ -1,0 +1,40 @@
+<html>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.js"></script>
+
+<body>
+
+  <div id="app">
+    <!-- message is a custom conponent, it has a "content" property-->
+    <message :content="message"></message>
+
+    <!-- this element value bind to vm.$data.input -->
+    <input type="text" v-model="input">
+    <h2>{{input}}</h2>
+  </div>
+
+  <script>
+    var C_Message = Vue.extend({
+      props: ['content'],
+      template: '<h1>{{content}}</h1>'
+    })
+    Vue.component("message", C_Message)
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello Vue.JS",
+        input: "there is your input"
+      }
+    });
+    /**
+     * vm.$data.message => message.props.content => <h1>Hello Vue.JS</h1> 
+     */
+
+    /**
+     * You can use browser console change vm.$data.message
+     * and data in page will change immediately 
+     */
+  </script>
+
+</body>
+
+</html>

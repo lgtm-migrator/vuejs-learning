@@ -1,0 +1,19 @@
+<html>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.js"></script>
+
+<body>
+  <div id="app">
+    <div>not use v-html: {{html_1}}</div>
+    <div v-html="html_1"></div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        html_1: "<h1>this is a html string</h1>"
+      }
+    })
+  </script>
+</body>
+
+</html>

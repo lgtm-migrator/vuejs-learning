@@ -1,0 +1,38 @@
+<html>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.js"></script>
+
+<body>
+  <div id="app">
+    <h1 :id="id">This is ID, check it id property</h1>
+    <input type="text" v-model="firstname">
+    <input type="text" v-model="lastname">
+    <p>fullname: {{fullname}}</p>
+    <p v-if="showif">showif is {{showif}}</p>
+    <button v-on:click="click_btn">click num: {{click_num}}</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        id: 1,
+        firstname: "Theo",
+        lastname: "Sun",
+        showif: false,
+        click_num: 0
+      },
+      methods: {
+        click_btn: function() {
+          this.$data.click_num += 1
+        }
+      },
+      computed: {
+        fullname: function() {
+          return `${this.firstname} ${this.firstname}`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
