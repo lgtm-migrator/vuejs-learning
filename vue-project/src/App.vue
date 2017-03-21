@@ -1,6 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <el-menu theme="dark"
+             mode="horizontal">
+  
+      <router-link to="/">
+        <el-menu-item index="/">Home</el-menu-item>
+      </router-link>
+  
+      <router-link to="/table-desc">
+        <el-menu-item index="/table-desc">Table Describe</el-menu-item>
+      </router-link>
+  
+    </el-menu>
     <router-view></router-view>
   </div>
 </template>
@@ -18,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
