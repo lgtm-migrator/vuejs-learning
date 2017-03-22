@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-table :data="tableData"
-              style="width: 100%"
               v-loading.body="loading"
               align="center"
-              v-on:row-click="open_detail"
+              border
+              fit
               :default-sort="{prop: '_table_name', order: 'ascending'}">
       <el-table-column prop="_table_name"
                        label="表名_table_name"
@@ -20,7 +20,15 @@
       </el-table-column>
       <el-table-column label="操作">
         <template scope="scope">
-          <el-button type="text">查看表</el-button>
+  
+          <el-button size="small" @click="open_detail(scope.row)">
+            字段详情
+          </el-button>
+  
+          <router-link :to="'/table/' + scope.row._table_name">
+            <el-button size="small">查看表</el-button>
+          </router-link>
+  
         </template>
       </el-table-column>
     </el-table>
@@ -40,6 +48,7 @@
                          label="default value"></el-table-column>
       </el-table>
     </el-dialog>
+  
   </div>
 </template>
 
@@ -64,7 +73,7 @@ export default {
       .catch(err => console.error(err))
   },
   methods: {
-    open_detail: function (row, event, column) {
+    open_detail: function (row) {
       this.$data.current_row = row;
       this.$data.dialogTableVisible = true;
     }

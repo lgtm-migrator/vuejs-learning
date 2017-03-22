@@ -12,7 +12,18 @@
       </router-link>
   
     </el-menu>
-    <router-view></router-view>
+  
+    <el-row type="flex"
+            class="row-bg"
+            align="middle">
+      <el-col :offset="2"
+              :span="20">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </el-col>
+    </el-row>
+  
   </div>
 </template>
 
@@ -22,12 +33,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.el-row {
+  top: 5%;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #2c3e50
 }
 </style>

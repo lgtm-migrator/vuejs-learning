@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <img src="../assets/logo.png">
     <h2>CBDB API Front End</h2>
   </div>
@@ -16,6 +16,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+div {
+  vertical-align: middle
+}
 
 h1,
 h2 {
