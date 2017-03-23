@@ -1,47 +1,49 @@
 <template>
   <div>
-    <el-table :data="tableData"
-              style="width: 100%"
-              v-loading.body="loading"
-              empty-text="<empty>"
-              align="center"
-              border
-              :max-height="max_height"
-              fit>
-      <template v-for="column in columns">
-        <el-table-column :prop="column.name"
-                         :label="column.name"
-                         :fixed="column.cid==0"
-                         resizable>
-          <template scope="scope">
-            <el-popover trigger="hover"
-                        placement="top"
-                        width="300px"
-                        :content="scope.row[scope.column.property]"
-                        v-if="scope.row[scope.column.property]&&scope.row[scope.column.property].length>25">
-              <div slot="reference"
-                   class="name-wrapper">
-                <el-tag>detail</el-tag>
+    <el-card class="box-card">
+  
+      <el-table :data="tableData"
+                v-loading.body="loading"
+                empty-text="<empty>"
+                align="center"
+                border
+                fit>
+        <template v-for="column in columns">
+          <el-table-column :prop="column.name"
+                           :label="column.name"
+                           :fixed="column.cid==0"
+                           :width="column.name.length*20"
+                           resizable>
+            <template scope="scope">
+              <el-popover trigger="hover"
+                          placement="top"
+                          width="300px"
+                          :content="scope.row[scope.column.property]"
+                          v-if="scope.row[scope.column.property]&&scope.row[scope.column.property].length>25">
+                <div slot="reference"
+                     class="name-wrapper">
+                  <el-tag>detail</el-tag>
+                </div>
+              </el-popover>
+              <div v-else>
+                <p>
+                  {{ scope.row[scope.column.property] }}
+                </p>
               </div>
-            </el-popover>
-            <div v-else>
-              <p>
-                {{ scope.row[scope.column.property] }}
-              </p>
-            </div>
-          </template>
-        </el-table-column>
-      </template>
-    </el-table>
-    <br>
-    <el-pagination @current-change="page_change"
-                   @size-change="size_change"
-                   :current-page="currentPage"
-                   :page-size="pageSize"
-                   :page-sizes="[10, 30, 75, 100]"
-                   layout="sizes, prev, pager, next, jumper"
-                   :total="recordsCount">
-    </el-pagination>
+            </template>
+          </el-table-column>
+        </template>
+      </el-table>
+      <br>
+      <el-pagination @current-change="page_change"
+                     @size-change="size_change"
+                     :current-page="currentPage"
+                     :page-size="pageSize"
+                     :page-sizes="[10, 30, 75, 100]"
+                     layout="sizes, prev, pager, next, jumper"
+                     :total="recordsCount">
+      </el-pagination>
+    </el-card>
   </div>
 </template>
 
@@ -84,6 +86,7 @@ export default {
         .then(r => {
           this.tableData = r.result
           this.loading = false;
+          window.scrollTo(0, 0)
         })
         .catch(err => console.error(err))
     },

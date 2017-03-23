@@ -14,13 +14,11 @@
     </el-menu>
   
     <el-row type="flex"
-            class="row-bg"
-            align="middle">
+            class="row-bg">
       <el-col :offset="2"
               :span="20">
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
+        <router-view></router-view>
+  
       </el-col>
     </el-row>
   
@@ -35,7 +33,7 @@ export default {
 
 <style scoped>
 .el-row {
-  top: 5%;
+  top: 30px
 }
 
 #app {

@@ -1,37 +1,39 @@
 <template>
   <div>
-    <el-table :data="tableData"
-              v-loading.body="loading"
-              align="center"
-              border
-              fit
-              :default-sort="{prop: '_table_name', order: 'ascending'}">
-      <el-table-column prop="_table_name"
-                       label="表名_table_name"
-                       sortable>
-      </el-table-column>
-      <el-table-column prop="_columns_count"
-                       sortable
-                       label="表列数_columns_count">
-      </el-table-column>
-      <el-table-column prop="_record_count"
-                       sortable
-                       label="表行数_record_count">
-      </el-table-column>
-      <el-table-column label="操作">
-        <template scope="scope">
+    <el-card class="box-card">
   
-          <el-button size="small" @click="open_detail(scope.row)">
-            字段详情
-          </el-button>
+      <el-table :data="tableData"
+                v-loading.body="loading"
+                align="center"
+                border
+                fit
+                :default-sort="{prop: '_table_name', order: 'ascending'}">
+        <el-table-column prop="_table_name"
+                         label="表名_table_name"
+                         sortable>
+        </el-table-column>
+        <el-table-column prop="_columns_count"
+                         sortable
+                         label="表列数_columns_count">
+        </el-table-column>
+        <el-table-column prop="_record_count"
+                         sortable
+                         label="表行数_record_count">
+        </el-table-column>
+        <el-table-column label="操作">
+          <template scope="scope">
   
-          <router-link :to="'/table/' + scope.row._table_name">
-            <el-button size="small">查看表</el-button>
-          </router-link>
-  
-        </template>
-      </el-table-column>
-    </el-table>
+            <el-button size="small"
+                       @click="open_detail(scope.row)">
+              字段详情
+            </el-button>
+            <router-link :to="'/table/' + scope.row._table_name">
+              <el-button size="small">查看表</el-button>
+            </router-link>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
     <el-dialog :title="current_row._table_name"
                v-model="dialogTableVisible">
       <el-table align="center"
@@ -48,7 +50,6 @@
                          label="default value"></el-table-column>
       </el-table>
     </el-dialog>
-  
   </div>
 </template>
 
