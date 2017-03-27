@@ -11,6 +11,10 @@
         <el-menu-item index="/table-desc">Table Describe</el-menu-item>
       </router-link>
   
+      <router-link to="/office-type">
+        <el-menu-item index="/office-type">Office Type</el-menu-item>
+      </router-link>
+  
     </el-menu>
   
     <el-row type="flex"
@@ -32,10 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.el-row {
-  top: 30px
-}
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

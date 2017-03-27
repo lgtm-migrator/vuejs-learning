@@ -2,6 +2,7 @@
   <div>
     <img src="../assets/logo.png">
     <h2>CBDB API Front End</h2>
+    <p>中國歷代人物傳記資料庫 API 展示页面</p>
   </div>
 </template>
 
@@ -14,10 +15,9 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div {
-  vertical-align: middle
+  margin-top: 150px;  
 }
 
 h1,

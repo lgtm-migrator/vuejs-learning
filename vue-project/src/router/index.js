@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import TableDesc from '@/components/TableDesc'
 import Table from '@/components/Table'
+import OfficeType from '@/components/OfficeType'
 
 Vue.use(Router)
 
@@ -11,18 +12,23 @@ const router = new Router({
     {
       path: '/',
       name: 'Home',
-      title:'home',
+      title: 'home',
       component: Home
     }, {
       path: '/table-desc',
       name: 'TableDesc',
-      title:'Table Describe',
+      title: 'Table Describe',
       component: TableDesc
     }, {
       path: '/table/:table_name',
-      title:'Table Detail',
+      title: 'Table Detail',
       name: 'Table',
       component: Table
+    }, {
+      path: '/office-type',
+      title: 'OfficeType',
+      name: 'OfficeType',
+      component: OfficeType
     }
   ]
 })
