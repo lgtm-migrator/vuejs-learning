@@ -6,6 +6,7 @@
                 v-loading.body="loading"
                 align="center"
                 border
+                :max-height="height"
                 fit
                 :default-sort="{prop: '_table_name', order: 'ascending'}">
         <el-table-column prop="_table_name"
@@ -61,8 +62,11 @@ export default {
       tableData: [],
       current_row: [],
       dialogTableVisible: false,
-      loading: true
+      loading: true,
+      height: window.innerHeight - 230
     }
+  },
+  watch: {
   },
   mounted: function () {
     fetch("https://cbdb-api.fornever.org/table-desc()")
@@ -72,6 +76,9 @@ export default {
         this.$data.tableData = res.result
       })
       .catch(err => console.error(err))
+    window.onresize = event => {
+      this.height = window.innerHeight - 230
+    }
   },
   methods: {
     open_detail: function (row) {

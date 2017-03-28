@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-card class="box-card">
-  
       <el-table :data="tableData"
                 v-loading.body="loading"
                 empty-text="<empty>"
                 align="center"
+                :height="height"
                 border
                 fit>
         <template v-for="column in columns">
@@ -59,7 +59,7 @@ export default {
       currentPage: 1,
       pageSize: 10,
       loading: true,
-      max_height: window.innerHeight * 0.8
+      height: window.innerHeight - 340
     }
   },
   mounted() {
@@ -89,6 +89,8 @@ export default {
           window.scrollTo(0, 0)
         })
         .catch(err => console.error(err))
+      window.onresize = event =>
+        this.height = window.innerHeight - 340
     },
     size_change: function (val) {
       this.pageSize = val
@@ -106,6 +108,6 @@ export default {
 <style scoped>
 div {
   margin-bottom: 30px;
-  margin-top:30px;
+  margin-top: 30px;
 }
 </style>
