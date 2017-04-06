@@ -69,7 +69,7 @@ export default {
   watch: {
   },
   mounted: function () {
-    fetch("https://cbdb-api.fornever.org/table-desc()")
+    fetch("https://cbdb-api.fornever.org/table-desc")
       .then(res => res.json())
       .then(res => {
         this.$data.loading = false;

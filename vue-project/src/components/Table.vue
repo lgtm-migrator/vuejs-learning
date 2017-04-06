@@ -5,14 +5,12 @@
                 v-loading.body="loading"
                 empty-text="<empty>"
                 align="center"
-                :height="height"
                 border
                 fit>
         <template v-for="column in columns">
           <el-table-column :prop="column.name"
                            :label="column.name"
-                           :fixed="column.cid==0"
-                           :width="column.name.length*20"
+                           :min-width="column.name.length*20"
                            resizable>
             <template scope="scope">
               <el-popover trigger="hover"
@@ -64,7 +62,7 @@ export default {
   },
   mounted() {
     this.tableName = this.$route.params.table_name
-    fetch(`https://cbdb-api.fornever.org/table-desc(${this.tableName})`)
+    fetch(`https://cbdb-api.fornever.org/table-desc?table_name=${this.tableName}`)
       .then(r => r.json())
       .then(r => {
         this.recordsCount = r.result._record_count;
@@ -81,7 +79,7 @@ export default {
   methods: {
     fetch_table_data: function (tablename, page_index, page_size) {
       this.loading = true;
-      fetch(`https://cbdb-api.fornever.org/query(select * from ${this.tableName} limit ${(page_index - 1) * page_size},${page_size})`)
+      fetch(`https://cbdb-api.fornever.org/query?sql=select * from ${this.tableName} limit ${(page_index - 1) * page_size},${page_size}`)
         .then(r => r.json())
         .then(r => {
           this.tableData = r.result
@@ -89,8 +87,6 @@ export default {
           window.scrollTo(0, 0)
         })
         .catch(err => console.error(err))
-      window.onresize = event =>
-        this.height = window.innerHeight - 340
     },
     size_change: function (val) {
       this.pageSize = val
